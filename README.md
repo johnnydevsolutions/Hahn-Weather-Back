@@ -43,31 +43,31 @@ The solution follows Clean Architecture principles with the following structure:
 1. Update the connection string in `appsettings.json`
 2. Run Entity Framework migrations:
 
-cd Infrastructure
-dotnet ef database update
+- cd Infrastructure
+- dotnet ef database update
 
 
 ### Running the Application
 
 1. Start the WebAPI:
-Root Foolder
-dotnet watch run --project .\WebApi\WebApi.csproj
+- Root Foolder
+- dotnet watch run --project .\WebApi\WebApi.csproj
 
 or
 
-cd WebAPI
-dotnet watch run
+- cd WebAPI
+- dotnet watch run
 
 
 2. Start the WorkerService:
 
-Root Foolder
-dotnet watch run --project .\WebApi\WebApi.csproj
+- Root Foolder
+- dotnet watch run --project .\WebApi\WebApi.csproj
 
 or
 
-cd WorkerService
-dotnet watch run 
+- cd WorkerService
+- dotnet watch run 
 
 
 ### 4. Hangfire Dashboard
