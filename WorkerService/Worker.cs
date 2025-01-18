@@ -18,13 +18,12 @@ public class Worker : BackgroundService
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            // Agendar o job para rodar a cada hora
             _jobManager.AddOrUpdate<WeatherUpdateJob>(
-                "WeatherUpdateJob",
-                job => job.ExecuteAsync("São Paulo"),
+                "MultiCityWeatherUpdateJob",
+                job => job.ExecuteAsync(),
                 Cron.Hourly);
 
-            _logger.LogInformation("WeatherUpdateJob agendado para rodar a cada hora.");
+            _logger.LogInformation("WeatherUpdateJob scheduled to run hourly for all configured cities.");
 
             return Task.CompletedTask;
         }

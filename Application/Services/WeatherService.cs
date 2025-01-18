@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Interfaces;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
 
 namespace Application.Services
 {
@@ -12,11 +13,16 @@ namespace Application.Services
     {
         private readonly IWeatherRepository _weatherRepository;
         private readonly HttpClient _httpClient;
+        private readonly IConfiguration _configuration;
 
-        public WeatherService(IWeatherRepository weatherRepository, HttpClient httpClient)
+        public WeatherService(
+            IWeatherRepository weatherRepository, 
+            HttpClient httpClient,
+            IConfiguration configuration)
         {
             _weatherRepository = weatherRepository;
             _httpClient = httpClient;
+            _configuration = configuration;
         }
 
         public async Task<IEnumerable<WeatherForecast>> GetAllForecastsAsync()
@@ -31,12 +37,18 @@ namespace Application.Services
 
         public async Task<WeatherForecast> GetForecastByCityAsync(string city)
         {
-            // Mapeie a cidade para latitude e longitude conforme necessário
-            // Exemplo para São Paulo: latitude=-23.5505, longitude=-46.6333
-            var latitude = "-23.5505";
-            var longitude = "-46.6333";
+            var coordinates = _configuration
+                .GetSection($"WeatherSettings:LatitudeLongitude:{city}")
+                .Get<Dictionary<string, string>>();
 
-            var response = await _httpClient.GetStringAsync($"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true");
+            if (coordinates == null)
+                throw new ArgumentException($"Coordinates not found for city: {city}");
+
+            var latitude = coordinates["Latitude"];
+            var longitude = coordinates["Longitude"];
+
+            var response = await _httpClient.GetStringAsync(
+                $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true");
             var weatherData = JsonConvert.DeserializeObject<dynamic>(response);
 
             return new WeatherForecast

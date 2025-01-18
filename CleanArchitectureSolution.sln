@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerService", "WorkerService\WorkerService.csproj", "{D2C13F7E-02EF-4752-9BE9-3A403F8B1EF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jobs", "Jobs\Jobs.csproj", "{548839DC-F065-4D1B-9249-8041BBD7C187}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{D2C13F7E-02EF-4752-9BE9-3A403F8B1EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2C13F7E-02EF-4752-9BE9-3A403F8B1EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2C13F7E-02EF-4752-9BE9-3A403F8B1EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{548839DC-F065-4D1B-9249-8041BBD7C187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{548839DC-F065-4D1B-9249-8041BBD7C187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{548839DC-F065-4D1B-9249-8041BBD7C187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{548839DC-F065-4D1B-9249-8041BBD7C187}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
