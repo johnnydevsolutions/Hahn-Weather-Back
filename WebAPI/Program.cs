@@ -58,6 +58,8 @@ builder.Services.AddHangfireServer();
 // Registrar Jobs
 builder.Services.AddScoped<WeatherUpdateJob>();
 
+builder.Services.AddMemoryCache();
+
 var app = builder.Build();
 
 // Configurar o pipeline HTTP

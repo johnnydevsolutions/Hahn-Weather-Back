@@ -11,6 +11,7 @@ namespace Application
         public string? City { get; set; }
         public DateTime Date { get; set; }
         public double Temperature { get; set; }
+        public double TemperatureFahrenheit { get; set; }
         public string? Condition { get; set; }
     }
 }

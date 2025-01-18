@@ -41,6 +41,8 @@ builder.Services.AddHostedService<Worker>();
 // Configurar AutoMapper se necessário
 builder.Services.AddAutoMapper(typeof(WeatherForecastProfile));
 
+builder.Services.AddMemoryCache();
+
 var app = builder.Build();
 
 // Executar a aplicação
